@@ -22,7 +22,7 @@ The purpose of this project is to create 4 tables which are customers, products,
 
 The database was named "database16" were created in AWS and the scheme of 4 tables were created in pgAdmin. See picture below:
 
-<img width="1440" alt="Screen Shot 2022-07-28 at 12 48 08 AM" src="https://user-images.githubusercontent.com/62758795/181502907-907190a4-6012-4364-a2fc-cc14982525e7.png">
+<img width="1296" alt="Screen Shot 2022-07-28 at 8 53 50 AM" src="https://user-images.githubusercontent.com/62758795/181520327-0bc7bcf5-76f6-4574-80a4-b0fb193229df.png">
 
 First, I extracted the review datasets, then created a new Dataframe using the code:
 
@@ -82,6 +82,7 @@ When Loading review_id_df to table in RDS, use the code:
 
 This is what it will look like on pgAdmin:
 
+<img width="1296" alt="Screen Shot 2022-07-28 at 9 01 05 AM" src="https://user-images.githubusercontent.com/62758795/181521008-db43ed33-a717-4680-aed1-ec7c1aa63aff.png">
 
 Loading products_df to table in RDS, the code is
 
