@@ -1,37 +1,34 @@
 # Amazon_Vine_Analysis
 This is a project analyzing Amazon reviews written by members of the paid Amazon Vine program.
 
-## Overview
+## Perform ETL on Amazon Products Review
 
-In this project, I chose U.S. Beauty products from the U.S. reviews dataset from https://s3.amazonaws.com/amazon-reviews-pds/tsv/index.txt
+In this project, I picked a dataset on U.S. Beauty products from Amazon Review dataset https://s3.amazonaws.com/amazon-reviews-pds/tsv/index.txt
 
 The U.S. reviews dataset on Beauty product link for this repository is as follows:
 
-> “https://s3.amazonaws.com/amazon-reviews-pds/tsv/amazon_reviews_us_Beauty_v1_00.tsv.gz”
+> √íhttps://s3.amazonaws.com/amazon-reviews-pds/tsv/amazon_reviews_us_Beauty_v1_00.tsv.gz√ì
 
 
-I have used PySpark to perform the ETL process to extract the dataset, transform the data, connect to an AWS RDS instance, and load the transformed data into pgAdmin. Then, I have used PySpark to determine if there is any bias toward favorable reviews from Vine members in the dataset.
+I used PySpark to read in a CSV file, to perform ETL process to extract the datasets, to get DataFrame information, to connect pgAdmin to a AWS RDS, to create RDS and AWS, to shut down AWS instancs and transform and filter data. Later, I used PySpark to determine if there is any bias toward the reviews from Vine members in the datasets.
 
-The results are presented, and a summary of the analysis has written. 
+### Deliverable1
 
-### Purpose
-
-The purpose of the project is to crate four tables which are customers, products, Review_id, vine; to upload them in a AWS database by pgAdmin; and to analyze vine table.
-
+The purpose of this project is to create 4 tables which are customers, products, Review_id, vine; to upload them in a AWS database by pgAdmin; and to analyze vine table.
 
 ## Results
 
 ### Perform ETL on Amazon Software Product Reviews
 
-Database named database16 are created in AWS and the scheme of four tables are created in pgAdmin bey the following quiry:
+The database was named "database16" were created in AWS and the scheme of 4 tables were created in pgAdmin. See picture below:
 
+<img width="1440" alt="Screen Shot 2022-07-28 at 12 48 08 AM" src="https://user-images.githubusercontent.com/62758795/181502907-907190a4-6012-4364-a2fc-cc14982525e7.png">
 
-
-The dataset was extracted by the code
+First, I extracted the review datasets, then created a new Dataframe using the code:
 
 > from pyspark import SparkFiles
 >
-> url = “https://s3.amazonaws.com/amazon-reviews-pds/tsv/amazon_reviews_us_Beauty_v1_00.tsv.gz”
+> url = √íhttps://s3.amazonaws.com/amazon-reviews-pds/tsv/amazon_reviews_us_Beauty_v1_00.tsv.gz√ì
 > 
 > spark.sparkContext.addFile(url)
 > 
@@ -41,34 +38,35 @@ Data frame customers_df was created by the code
 
 > customers_df = df.groupby("customer_id").count().withColumnRenamed("count", "customer_count")
 
-The first 20 rows of the dataframe is given below.
+The first 20 rows of the dataframe is below.
 
+<img width="265" alt="Screen Shot 2022-07-28 at 12 50 18 AM" src="https://user-images.githubusercontent.com/62758795/181503545-7f236fe7-e4be-473f-968d-d02ddc9ab8a8.png">
 
-Data frame products_df was created by the code
+DataFrame products_df was created using the code:
 
 > products_df = df.select(["product_id","product_title"]).drop_duplicates()
 
-The first 20 rows of the dataframe is given below.
+The first 20 rows of the DataFrame is below.
 
+<img width="285" alt="Screen Shot 2022-07-28 at 12 50 39 AM" src="https://user-images.githubusercontent.com/62758795/181503766-fb46fca1-814f-496f-9e08-e15daf57883a.png">
 
-
-Data frame review_id_df was created by the code
+DataFrame review_id_df was created using the code:
 
 > review_id_df = df.select(["review_id","customer_id","product_id","product_parent", to_date("review_date", 'yyyy-> MM-dd').alias("review_date")])
 
-The first 20 rows of the dataframe is given below.
+The first 20 rows of the dataframe is below.
 
+<img width="304" alt="Screen Shot 2022-07-28 at 8 24 48 AM" src="https://user-images.githubusercontent.com/62758795/181504394-5d5a0e02-d123-454a-86c5-dc4778fc3c6b.png">
 
-
-Data frame vine_df was created by the code
+DataFrame vine_df was created using the code:
 
 > vine_df = df.select(["review_id","star_rating","helpful_votes","total_votes","vine","verified_purchase"])
 
 The first 20 rows of the dataframe is given below.
 
+<img width="570" alt="Screen Shot 2022-07-28 at 12 51 00 AM" src="https://user-images.githubusercontent.com/62758795/181504675-360b246d-d5d1-4dc7-9add-98286056f13e.png">
 
-
-I have connect the AWS RDS instance (database16) to load the tables. The code is given below:
+Observe that, I connected the AWS RDS instance (database16) to load the tables using the code:
 
 > mode = "append"
 
@@ -77,16 +75,13 @@ I have connect the AWS RDS instance (database16) to load the tables. The code is
 > 
 > config = {"user":"postgres", 
 > 
->          "password": "**********", 
->          
->          "driver":"org.postgresql.Driver"}
+<img width="885" alt="Screen Shot 2022-07-28 at 12 55 07 AM" src="https://user-images.githubusercontent.com/62758795/181505231-ac89f981-dc70-4f4b-aee6-d52ffd874eb0.png">
 
-Loading  review_id_df to table in RDS, the code is
+When Loading review_id_df to table in RDS, use the code:
 
 > review_id_df.write.jdbc(url=jdbc_url, table='review_id_table', mode=mode, properties=config)
 
-And the picture is
-
+This is what it will look like on pgAdmin:
 
 
 Loading products_df to table in RDS, the code is
@@ -189,7 +184,7 @@ These results can be summarized by the following table:
 
 ## Summary
 
-Although the number of paid reviews very smaller than the number of unpaid reviews, the percentage of 5-star paid review is larger than the percentage of 5-star unpaid reviews.
+Although the number of paid reviews were smaller than the number of unpaid reviews, observe that the percentage of 5-star paid review was larger than the percentage of 5-star unpaid reviews.
 
 
 
