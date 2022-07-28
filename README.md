@@ -7,7 +7,7 @@ In this project, I picked a dataset on U.S. Beauty products from Amazon Review d
 
 The U.S. reviews dataset on Beauty product link for this repository is as follows:
 
-> Òhttps://s3.amazonaws.com/amazon-reviews-pds/tsv/amazon_reviews_us_Beauty_v1_00.tsv.gzÓ
+> https://s3.amazonaws.com/amazon-reviews-pds/tsv/amazon_reviews_us_Beauty_v1_00.tsv.gzÓ
 
 
 I used PySpark to read in a CSV file, to perform ETL process to extract the datasets, to get DataFrame information, to connect pgAdmin to a AWS RDS, to create RDS and AWS, to shut down AWS instancs and transform and filter data. Later, I used PySpark to determine if there is any bias toward the reviews from Vine members in the datasets.
