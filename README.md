@@ -80,7 +80,7 @@ When Loading review_id_df to table in RDS, use the code:
 
 > review_id_df.write.jdbc(url=jdbc_url, table='review_id_table', mode=mode, properties=config)
 
-This is what it will look like on pgAdmin:
+This is what the table looks like on pgAdmin:
 
 <img width="1296" alt="Screen Shot 2022-07-28 at 9 01 05 AM" src="https://user-images.githubusercontent.com/62758795/181521008-db43ed33-a717-4680-aed1-ec7c1aa63aff.png">
 
@@ -88,7 +88,7 @@ Loading products_df to table in RDS, the code is
 
 > products_df.write.jdbc(url=jdbc_url, table='products_table', mode=mode, properties=config)
 
-And the picture is
+This is what the table looks like on pgAdmin:
 
 
 
@@ -96,15 +96,15 @@ Loading customers_df to table in RDS, the code is
 
 > customers_df.write.jdbc(url=jdbc_url, table='customers_table', mode=mode, properties=config)
 
-And the picture is
+This is what the table looks like on pgAdmin:
 
-
+<img width="1296" alt="Screen Shot 2022-07-28 at 9 57 46 AM" src="https://user-images.githubusercontent.com/62758795/181525832-33725ff4-2c7e-4dea-a375-4d0701053c5c.png">
 
 Loading vine_df to table in RDS, the code is
 
 > vine_df.write.jdbc(url=jdbc_url, table='vine_table', mode=mode, properties=config)
 
-And the picture is
+This is what the table looks like on pgAdmin:
 
 
 
