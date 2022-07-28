@@ -48,7 +48,7 @@ DataFrame products_df was created using the code:
 
 The first 20 rows of the DataFrame is below.
 
-<img width="285" alt="Screen Shot 2022-07-28 at 12 50 39 AM" src="https://user-images.githubusercontent.com/62758795/181503766-fb46fca1-814f-496f-9e08-e15daf57883a.png">
+<img width="285" alt="Screen Shot 2022-07-28 at 12 50 39 AM" src="https://user-images.githubusercontent.com/62758795/181506680-3023317f-0e7d-45e0-ac0a-3554f4c45e09.png">
 
 DataFrame review_id_df was created using the code:
 
@@ -56,7 +56,7 @@ DataFrame review_id_df was created using the code:
 
 The first 20 rows of the dataframe is below.
 
-<img width="304" alt="Screen Shot 2022-07-28 at 8 24 48 AM" src="https://user-images.githubusercontent.com/62758795/181504394-5d5a0e02-d123-454a-86c5-dc4778fc3c6b.png">
+<img width="570" alt="Screen Shot 2022-07-28 at 12 51 00 AM" src="https://user-images.githubusercontent.com/62758795/181506329-44b43aae-13bd-4ead-be76-642cda643d8d.png">
 
 DataFrame vine_df was created using the code:
 
