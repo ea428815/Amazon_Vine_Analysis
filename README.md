@@ -73,9 +73,10 @@ Note that, I connected the AWS RDS instance (database16) to load the tables usin
 > jdbc_url="jdbc:postgresql://database16.cbchqixwjhxz.us-east-2.rds.amazonaws.com:5432/postgres"
 > 
 > config = {"user":"postgres", 
+>       "password": "***********"
+>       "driver": "org. postgresql.Driver"}
 > 
-
-<img width="1124" alt="Screen Shot 2022-07-28 at 11 44 43 AM" src="https://user-images.githubusercontent.com/62758795/181585416-700d271a-a173-43f6-a79b-d1a8cadefd3d.png">
+<img width="953" alt="Screen Shot 2022-07-28 at 12 33 49 PM" src="https://user-images.githubusercontent.com/62758795/181591349-dbd47bb1-db2e-4186-999f-5c8ca0de7ac8.png">
 
 Load review_id_df to table in RDS code is:
 
@@ -108,7 +109,9 @@ Loading vine_df to table in RDS code is:
 This is what the table looks like on pgAdmin:
 
 
+Code lists will look like this:
 
+<img width="1121" alt="Screen Shot 2022-07-28 at 12 30 02 PM" src="https://user-images.githubusercontent.com/62758795/181591712-888304ce-5bc0-410f-b4a1-065eede769e8.png">
 
 ###Data Extraction
 
