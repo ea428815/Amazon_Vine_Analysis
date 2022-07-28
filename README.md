@@ -95,13 +95,13 @@ This is what the table looks like on pgAdmin:
 
 Load customers_df to table in RDS code is:
 
-<img width="1296" alt="Screen Shot 2022-07-28 at 11 34 13 AM" src="https://user-images.githubusercontent.com/62758795/181584890-43492c7f-611b-4982-a6c2-e224f5c834e1.png">
+< customers_df.write.jdbc(url=jdbc_url, table='customers_table', mode=mode, properties=config)
 
 This is what the table looks like on pgAdmin:
 
 <img width="1296" alt="Screen Shot 2022-07-28 at 9 57 46 AM" src="https://user-images.githubusercontent.com/62758795/181525832-33725ff4-2c7e-4dea-a375-4d0701053c5c.png">
 
-Loading vine_df to table in RDS, the code is
+Loading vine_df to table in RDS code is:
 
 > vine_df.write.jdbc(url=jdbc_url, table='vine_table', mode=mode, properties=config)
 
