@@ -64,12 +64,11 @@ DataFrame vine_df was created using the code:
 
 The first 20 rows of the dataframe is given below.
 
-<img width="570" alt="Screen Shot 2022-07-28 at 12 51 00 AM" src="https://user-images.githubusercontent.com/62758795/181504675-360b246d-d5d1-4dc7-9add-98286056f13e.png">
+<img width="657" alt="Screen Shot 2022-07-28 at 12 51 30 AM" src="https://user-images.githubusercontent.com/62758795/181507302-7088be73-80a1-4ed2-a7ca-6c484fc88e19.png">
 
-Observe that, I connected the AWS RDS instance (database16) to load the tables using the code:
+Note that, I connected the AWS RDS instance (database16) to load the tables using the code:
 
 > mode = "append"
-
 > 
 > jdbc_url="jdbc:postgresql://database16.cbchqixwjhxz.us-east-2.rds.amazonaws.com:5432/database16"
 > 
