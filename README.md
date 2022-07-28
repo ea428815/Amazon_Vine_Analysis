@@ -70,13 +70,14 @@ Note that, I connected the AWS RDS instance (database16) to load the tables usin
 
 > mode = "append"
 > 
-> jdbc_url="jdbc:postgresql://database16.cbchqixwjhxz.us-east-2.rds.amazonaws.com:5432/database16"
+> jdbc_url="jdbc:postgresql://database16.cbchqixwjhxz.us-east-2.rds.amazonaws.com:5432/postgres"
 > 
 > config = {"user":"postgres", 
 > 
-<img width="885" alt="Screen Shot 2022-07-28 at 12 55 07 AM" src="https://user-images.githubusercontent.com/62758795/181505231-ac89f981-dc70-4f4b-aee6-d52ffd874eb0.png">
 
-When Loading review_id_df to table in RDS, use the code:
+<img width="1124" alt="Screen Shot 2022-07-28 at 11 44 43 AM" src="https://user-images.githubusercontent.com/62758795/181585416-700d271a-a173-43f6-a79b-d1a8cadefd3d.png">
+
+Load review_id_df to table in RDS code is:
 
 > review_id_df.write.jdbc(url=jdbc_url, table='review_id_table', mode=mode, properties=config)
 
@@ -84,7 +85,7 @@ This is what the table looks like on pgAdmin:
 
 <img width="1296" alt="Screen Shot 2022-07-28 at 9 01 05 AM" src="https://user-images.githubusercontent.com/62758795/181521008-db43ed33-a717-4680-aed1-ec7c1aa63aff.png">
 
-Loading products_df to table in RDS, the code is
+Load products_df to table in RDS code is:
 
 > products_df.write.jdbc(url=jdbc_url, table='products_table', mode=mode, properties=config)
 
@@ -92,9 +93,9 @@ This is what the table looks like on pgAdmin:
 
 
 
-Loading customers_df to table in RDS, the code is
+Load customers_df to table in RDS code is:
 
-> customers_df.write.jdbc(url=jdbc_url, table='customers_table', mode=mode, properties=config)
+<img width="1296" alt="Screen Shot 2022-07-28 at 11 34 13 AM" src="https://user-images.githubusercontent.com/62758795/181584890-43492c7f-611b-4982-a6c2-e224f5c834e1.png">
 
 This is what the table looks like on pgAdmin:
 
@@ -108,11 +109,10 @@ This is what the table looks like on pgAdmin:
 
 
 
-You can find the entire code in the Main branch: ![Amazon_Software_Reviews_ETL](Amazon_Reviews_ETL.ipynb)
 
 ###Data Extraction
 
-The dataset was extracted by the code
+The dataset was extracted using the code:
 
 >from pyspark import SparkFiles
 >
@@ -122,15 +122,15 @@ The dataset was extracted by the code
 >
 >df = spark.read.option("encoding", "UTF-8").csv(SparkFiles.get("amazon_reviews_us_Software_v1_00.tsv.gz"), >sep="\t", header=True, inferSchema=True)
 
-The wine table was created by the code 
+The vine table was created by the code:
 
 > vine_df = df.select(["review_id","star_rating","helpful_votes","total_votes","vine","verified_purchase"])
 
-The dataframe was filtered according to "total_votes" greater than or equal to 20 by the code
+The dataframe was filtered according to "total_votes" greater than or equal to 20 using the code:
 
 > tv_more_20_df=vine_df.filter(vine_df['total_votes']>=20)
 
-The data frame was filtered according to the percentage of "helpful_vote" greater than or equal to 50 as
+The data frame was filtered according to the percentage of "helpful_vote" greater than or equal to 50 using the code:
 
 > vine_new_1_df=tv_more_20_df.filter(tv_more_20_df["helpful_votes"]/tv_more_20_df['total_votes']>=0.5)
 
@@ -142,7 +142,7 @@ The data frame vine_unpaid was created by
 
 > vine_unpaid_df=vine_new_1_df.filter(vine_new_1_df['vine']=="N")
 
-Finally, the following codes were written:
+Lastly, the following codes were used:
 
 > **The number of paid reviews:**
 > 
