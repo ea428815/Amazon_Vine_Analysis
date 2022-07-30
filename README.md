@@ -1,5 +1,5 @@
 # Amazon_Vine_Analysis
-This is a project analyzing Amazon reviews written by members of the paid Amazon Vine program.
+This project analyzes Amazon reviews completed by members of paid Amazon Vine program.
 
 ## Perform ETL on Amazon Products Review
 
